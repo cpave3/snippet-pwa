@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 
 interface Category {
-    slug: string;
-    label: string;
-    color: string;
+  slug: string;
+  label: string;
+  color: string;
 }
 
 export const categories: Category[] = [
@@ -17,22 +17,32 @@ export const categories: Category[] = [
   { slug: "quotes", label: "Quotes X Weird", color: "#d9fbdc" },
 ];
 
-const Container = styled.div`
+const PageContainer = styled.div`
   background-color: #b6e1e7;
   height: 100vh;
 `;
 
+const ListContainer = styled.ul`
+  padding: 10px;
+`;
+
+const Item = styled.li`
+  border: 1px solid blue;
+  padding: 10px 0;
+  margin: 20px 0;
+`;
+
 const Categoires = () => {
   return (
-    <Container>
-      <ul>
+    <PageContainer>
+      <ListContainer>
         {categories.map((category) => (
           <Link to={`/categories/${category.slug}`}>
-            <li>{category.label}</li>
+            <Item>{category.label}</Item>
           </Link>
         ))}
-      </ul>
-    </Container>
+      </ListContainer>
+    </PageContainer>
   );
 };
 

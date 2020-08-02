@@ -7,11 +7,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <div>home</div>
-          <Link to="/categories">go</Link>
-        </Route>
-        <Route path="/categories" exact>
+        <Route path={['/', '/categories']} exact>
           <Categoires />
         </Route>
         <Route path="/categories/:type">
