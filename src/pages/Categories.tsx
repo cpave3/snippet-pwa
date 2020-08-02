@@ -23,13 +23,31 @@ const PageContainer = styled.div`
 `;
 
 const ListContainer = styled.ul`
-  padding: 10px;
+  padding: 35px;
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const Item = styled.li`
-  border: 1px solid blue;
-  padding: 10px 0;
   margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: bold;
+  background: white;
+  flex-direction: column;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+`;
+
+const Adnornment = styled.div`
+  height: 10px;
+  width: 100%;
+  border-bottom: 1px dashed black;
 `;
 
 const Categoires = () => {
@@ -38,7 +56,10 @@ const Categoires = () => {
       <ListContainer>
         {categories.map((category) => (
           <Link to={`/categories/${category.slug}`}>
-            <Item>{category.label}</Item>
+            <Item>
+              <span style={{ padding: 20 }}>{category.label}</span>
+              <Adnornment style={{ background: category.color }} />
+            </Item>
           </Link>
         ))}
       </ListContainer>
