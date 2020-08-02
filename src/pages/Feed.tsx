@@ -8,7 +8,7 @@ import { RouteComponentProps, withRouter, Link } from "react-router-dom";
 
 import "./Feed.css";
 
-import bottomImg from '../assets/bottom.png'
+import bottomImg from "../assets/bottom.png";
 
 import { stories } from "../assets/stories";
 
@@ -20,12 +20,10 @@ interface Props extends RouteComponentProps<FeedRouterProps> {}
 
 const Feed: FunctionComponent<Props> = ({ match }) => {
   const Slide = styled.div`
-    border: 1px solid purple;
+    overflow: hidden;
     box-sizing: border-box;
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
     height: 100% !important;
   `;
