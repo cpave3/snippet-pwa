@@ -1,5 +1,5 @@
 .mySwiper {
-  height: 100vh !important;
+  height: calc(100vh - 50px) !important;
 }
 
 .swiper2 {

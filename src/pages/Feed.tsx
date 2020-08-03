@@ -8,8 +8,6 @@ import { RouteComponentProps, withRouter, Link } from "react-router-dom";
 
 import "./Feed.css";
 
-import bottomImg from "../assets/bottom.png";
-
 import { stories } from "../assets/stories";
 
 interface FeedRouterProps {
@@ -23,7 +21,7 @@ const Feed: FunctionComponent<Props> = ({ match }) => {
     overflow: hidden;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     height: 100% !important;
   `;
@@ -37,7 +35,7 @@ const Feed: FunctionComponent<Props> = ({ match }) => {
     height: 50vh;
     font-size: 1.5rem;
     font-weight: bold;
-    line-height: 1.5rem;
+    line-height: 2.2rem;
     padding: 0 25px;
   `;
 
@@ -51,8 +49,44 @@ const Feed: FunctionComponent<Props> = ({ match }) => {
     padding: 10px 25px;
   `;
 
+  const InternalWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  `;
+
+  const BottomBar = styled.div`
+    background: black;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+  `;
+
+  const CounterContainer = styled.div`
+    width: 50px;
+    height: 75px;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+  `;
+
   return (
     <Sdiv>
+      <CounterContainer>
+        <span>14</span>
+      </CounterContainer>
       <Swiper
         direction="vertical"
         initialSlide={initialSlide}
@@ -63,22 +97,25 @@ const Feed: FunctionComponent<Props> = ({ match }) => {
 
           return (
             <Slide key={slug} style={{ background: color }}>
-              <CategoryLabel>{label}</CategoryLabel>
-              <Swiper
-                direction="horizontal"
-                initialSlide={0}
-                containerClass="swiper2"
-              >
-                {snippets.map((snippet) => (
-                  <Snip>
-                    <p>{snippet}</p>
-                  </Snip>
-                ))}
-              </Swiper>
+              <InternalWrapper>
+                <CategoryLabel>{label}</CategoryLabel>
+                <Swiper
+                  direction="horizontal"
+                  initialSlide={0}
+                  containerClass="swiper2"
+                >
+                  {snippets.map((snippet) => (
+                    <Snip>
+                      <p>{snippet}</p>
+                    </Snip>
+                  ))}
+                </Swiper>
+              </InternalWrapper>
             </Slide>
           );
         })}
       </Swiper>
+      <BottomBar />
     </Sdiv>
   );
 };
